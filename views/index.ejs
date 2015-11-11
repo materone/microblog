@@ -3,7 +3,7 @@
   <head>
     <title><%= title %> - MicroBlog </title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-		<link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+		<link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
 		<style type="text/css">
       body{
         padding-top: 60px;
@@ -21,7 +21,7 @@
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="/">MicroBlog</a>
-          <div class="nav-collapse">
+          <div class="nav-pills">
             <ul class="nav">
               <li class="active"><a href="/">首页</a></li>
               <li><a href="/login">登入</a></li>
@@ -37,8 +37,8 @@
         <h1>欢迎来到MicroBlog</h1>
         <p>MicroBlog 是一个基于Nodejs的微博系统</p>
         <p>
-          <a class="btn btn-primary btn-large" href="/login">登录</a>
-          <a class="btn btn-large" href="/reg">注册</a>
+          <a class="btn btn-primary btn-sm" href="/login">登录</a>
+          <a class="btn btn-sm" href="/reg">注册</a>
         </p>
       </div>
       <hr/>
@@ -47,6 +47,6 @@
       </footer>
     </div>
   </body>
-  <script src="/javascripts/jquery.js"></script>
-  <script src="/javascripts/bootstrap.js"></script>
+  <script src="/javascripts/jquery.min.js"></script>
+  <script src="/javascripts/bootstrap.min.js"></script>
 </html>
