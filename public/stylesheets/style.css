@@ -6,3 +6,30 @@ body {
 a {
   color: #00B7FF;
 }
+
+.navbar-fixed-top + .content-container {
+	margin-top: 70px;
+}
+.content-container {
+	margin: 0 130px;
+}
+
+#top-link-block.affix-top {
+    position: absolute; /* allows it to "slide" up into view */
+    bottom: -82px; /* negative of the offset - height of link element */
+    right: 10px; /* padding from the left side of the window */
+}
+
+#top-link-block.affix {
+    position: fixed; /* keeps it on the bottom once in view */
+    bottom: 18px; /* height of link element */
+    right: 10px; /* padding from the left side of the window */
+}
+
+.fixed-btn{position:fixed;right:1%;bottom:2%;width:40px;border:1px solid #eee;background-color:white;font-size:24px;z-index:1040;-webkit-backface-visibility:hidden}
+.fixed-btn a{display:inline-block;width:40px;height:40px;text-align:center}
+.fixed-btn a:after{content:".";font-size:0;height:100%;display:inline-block;vertical-align:middle}
+.fixed-btn a i{vertical-align:middle}
+.fixed-btn .go-top{border-bottom:1px solid #eee}
+.fixed-btn .writer{background-color:#96b97d;font-size:18px;color:white}
+.fixed-btn .hide-go-top{display:none;opacity:0;filter:alpha(opacity=0)}

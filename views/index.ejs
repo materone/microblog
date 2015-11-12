@@ -1,9 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
   <head>
-    <title><%= title %> - MicroBlog </title>
+    <title><%= title %> - ChuFan Blog </title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-		<link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+		<link rel='stylesheet' href='/stylesheets/bootstrap.min.css' /> 
 		<style type="text/css">
       body{
         padding-top: 60px;
@@ -24,7 +24,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">MicroBlog</a>
+        <a class="navbar-brand" href="#">ChuFan</a>
       </div>
     
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -56,9 +56,9 @@
             </ul>
           </li>          
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Default</a></li>
+            <li><p class="navbar-text" onclick="s()">Default</p></li>
             <li><a href="../navbar-static-top/">Static top</a></li>
-            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="./">Fixed<span class="sr-only">(current)</span></a></li>
           </ul>
         </ul>
       </div><!-- /.navbar-collapse -->
@@ -67,8 +67,8 @@
 
     <div id="container" class="container">
       <div class="jumbotron">
-        <h1>欢迎来到MicroBlog</h1>
-        <p>MicroBlog 是一个基于Nodejs的微博系统</p>
+        <h1>欢迎来到 ChuFan's Blog</h1>
+        <p>ChuFan's Blog 是一个基于Nodejs的微博系统</p>
         <p>
           <a class="btn btn-primary btn-default" href="/login">登录</a>
           <a class="btn btn-default" href="/reg">注册</a>
@@ -76,15 +76,15 @@
       </div>
       <div class="row">
         <div class="col-lg-4">
-          <h2>Carbo Say</h2>
-          <p>东方破早梅,向暖一梓开,冰雪无人见,春从天上来</p>
+          <h2>Wendy Say:</h2>
+          <p>东方破早梅,向暖一枝开,冰雪无人见,春从天上来</p>
         </div> 
         <div class="col-lg-4">
-          <h2>Tony 说</h2>
+          <h2>Tony 说:</h2>
           <p>一树梨花压海棠,千树万树梨花开,无言结局,独上西楼,春风不解情,羞人坎坷无语,近期一摊,水天一色,空悲切.夜来沈醉卸妆迟，梅萼插残枝。酒醒熏破春睡，梦断不成归。人悄悄，月依依，翠帘垂。更挪残蕊，更拈馀香，更得些时。</p>
         </div> 
         <div class="col-lg-4">
-          <h2>如来佛祖云</h2>
+          <h2>如来佛祖云:</h2>
           <p>
             释迦牟尼（梵文：शाक्यमुनि、 Śākyamuni，意为“释迦族之圣者”），原名悉达多·乔达摩（巴利文：Siddhāttha Gotama；梵文：सिद्धार्थ गौतम, Siddhārtha Gautama），古印度著名思想家，佛教创始人，出生于今尼泊尔南部。被后世尊称为佛陀（Buddha、意为“觉悟者”）、世尊等；汉地尊称他为佛祖，即“佛教祖师”。被世人尊为神明。释迦牟尼以本誓愿于娑婆世界 五浊恶世示现成佛(详见八相成道)，是佛教开启者。
             释迦牟尼（公元前565年～公元前486年）大约与我国孔子同时代。他是古印度北部迦毗罗卫国（今尼泊尔境内）的王子，属刹帝利种姓。 据佛经记载，释迦牟尼在19岁时，有感于人世生、老、病、死等诸多苦恼，舍弃王族生活，出家修行。35岁时，他在菩提树下大彻大悟，遂开启佛教，随即在印度北部，中部恒河流域一带传教。年80在拘尸那迦城示现涅磐。
@@ -96,7 +96,28 @@
         <p><a href="http://v.find73.com" target="_blank">ChuFan Studio</a></p>
       </footer>
     </div>
-  </body>
+    <span id="top-link-block" class="hidden">
+      <a href="#top" class="well well-sm"  onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+        <i class="glyphicon glyphicon-chevron-up"></i>
+      </a>
+    </span><!-- /top-link-block -->
+  </body>     
   <script src="/javascripts/jquery.min.js"></script>
   <script src="/javascripts/bootstrap.min.js"></script>
+  <script type='text/javascript'>
+    $(function(){
+    // Only enable if the document has a long scroll bar
+    // Note the window height + offset
+      if ( ($(window).height() + 100) < $(document).height() ) {
+          $('#top-link-block').removeClass('hidden').affix({
+              // how far to scroll down before link "slides" into view
+              offset: {top:100}
+          });
+      }
+    });
+    function s(){        
+      alert($(window).height());
+      alert($(document).height());
+    }
+  </script>
 </html>
