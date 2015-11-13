@@ -32,6 +32,14 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', routes);
+app.get('/u/:user',routes.user);
+app.post('/post',routes.post);
+app.get('/reg',routes.reg);
+app.post('/reg',routes.doReg);
+app.get('/login',routes.login);
+app.post('/login',routes.doLogin);
+app.get('/logout',routes.logout);
+
 app.use('/users', users);
 app.use('/hello',routes);
 app.use('/hello/:foo',routes);
