@@ -19,7 +19,7 @@ router.get('/hello/:key',function(req,res,next){
 
 router.get('/', function(req, res, next) {
 	//console.log(req);
-  res.render('index', { title: 'Express ' + req.query.name,cont:req.query.son});
+  res.render('index', { title: 'Express'});
 });
 
 router.user = function(req,res){
