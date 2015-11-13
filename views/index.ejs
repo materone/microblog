@@ -10,6 +10,24 @@
         padding-bottom: 40px;
         min-height: 2000px;
       }
+
+      #top {
+        line-height: 0;
+        background: black;
+        -webkit-border-radius: 2px;
+        position: fixed;
+        bottom: 15px;
+        right: 15px;
+        padding: 8px;
+        text-decoration: none;
+        color: white;
+        opacity: 0.2;
+        -webkit-transition: opacity 300ms;
+      }
+
+      #top:hover {
+        opacity: 1;
+      }
     </style>
   </head>
   <body>
@@ -68,17 +86,17 @@
       </div><!-- /.navbar-collapse -->
     </div>
   </nav>
-  <%if(success){%>
-    <div class="alert alert-success">
-      <%=success%>
-    </div>
-  <%}%>
-  <%if(error){%>
-    <div class="alert alert-error">
-      <%=error%>
-    </div>
-  <%}%>
   <div id="container" class="container">
+    <%if(success){%>
+      <div class="alert alert-success">
+        <%=success%>
+      </div>
+    <%}%>
+    <%if(error){%>
+      <div class="alert alert-danger">
+        <%=error%>
+      </div>
+    <%}%>
     <div class="jumbotron">
       <h1>欢迎来到 ChuFan's Blog</h1>
       <p>ChuFan's Blog 是一个基于Nodejs的微博系统</p>
@@ -110,7 +128,7 @@
     </footer>
   </div>
   <span id="top-link-block" class="hidden">
-    <a href="#top" class="well well-sm"  onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+    <a id="top" href="#top" class="well well-sm"  onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
       <i class="glyphicon glyphicon-chevron-up"></i>
     </a>
   </span><!-- /top-link-block -->
