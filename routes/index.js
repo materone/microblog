@@ -20,4 +20,34 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express ' + req.query.name,cont:req.query.son});
 });
 
+router.user = function(req,res){
+	console.log('HEHE');
+	console.log('Param:'+req.params.user);
+	res.end('Mmia');
+};
+
+router.post = function(req,res){
+
+};
+
+router.reg = function(req,res){
+
+};
+
+router.doReg = function(req,res){
+
+};
+
+router.login = function(req,res){
+
+};
+
+router.doLogin = function(req,res){
+
+};
+
+router.logout = function(req,res){
+
+};
+
 module.exports = router;

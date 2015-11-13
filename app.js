@@ -32,12 +32,18 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', routes);
+app.get('/u/:user',routes.user);
+app.post('/post',routes.post);
+app.get('/reg',routes.reg);
+app.post('/reg',routes.doReg);
+app.get('/login',routes.login);
+app.post('/login',routes.doLogin);
+app.get('/logout',routes.logout);
 
 app.use('/users', users);
 app.use('/hello',routes);
 app.use('/hello/:foo',routes);
 app.get('/file/:name', function (req, res, next) {
-
   var options = {
     root: __dirname + '/public/',
     dotfiles: 'deny',
@@ -57,7 +63,6 @@ app.get('/file/:name', function (req, res, next) {
       console.log('Sent:', fileName);
     }
   });
-
 });
 
 app.get('/down',function(req,res){
