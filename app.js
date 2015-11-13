@@ -85,7 +85,7 @@ function checkNotLogin(req,res,next){
     return res.redirect('/');
   }
   next();
-}
+}e
 
 app.get('/file/:name', function (req, res, next) {
   var options = {
