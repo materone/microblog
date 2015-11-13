@@ -23,7 +23,7 @@ a {
 #top-link-block.affix {
     position: fixed; /* keeps it on the bottom once in view */
     bottom: 18px; /* height of link element */
-    right: 10px; /* padding from the left side of the window */
+    right: 20px; /* padding from the left side of the window */
 }
 
 .fixed-btn{position:fixed;right:1%;bottom:2%;width:40px;border:1px solid #eee;background-color:white;font-size:24px;z-index:1040;-webkit-backface-visibility:hidden}
