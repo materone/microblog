@@ -78,7 +78,13 @@
             </ul>
           </li>          
           <ul class="nav navbar-nav navbar-right">
-            <li><p class="navbar-text" onclick="s()">Default</p></li>
+            <li><p class="navbar-text" onclick="s()">
+            <%if(user){%>
+            Hi, <%=user.name%>
+            <%}else{%>
+            Default
+            <%}%>
+            </p></li>
             <li><a href="../navbar-static-top/">Static top</a></li>
             <li class="active"><a href="./">Fixed<span class="sr-only">(current)</span></a></li>
           </ul>
@@ -125,6 +131,7 @@
     <hr/>
     <footer>
       <p><a href="http://v.find73.com" target="_blank">ChuFan Studio</a></p>
+      <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">点我弹出/隐藏弹出框</button>
     </footer>
   </div>
   <span id="top-link-block" class="hidden">
@@ -144,6 +151,7 @@
               // how far to scroll down before link "slides" into view
               offset: {top:100}
           });
+      $('[data-toggle="popover"]').popover();
       }
     });
     function s(){        
