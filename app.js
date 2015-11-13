@@ -6,6 +6,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var multer = require('multer'); 
 var util = require('util');
+var methodOverride = require('method-override');
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+var settings = require('./Settings');
+var flash = require('connect-flash');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -20,14 +25,36 @@ app.set('view cache',false);
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
+app.use(methodOverride());
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: settings.cookieSecret,
+  store: new MongoStore({
+    db:settings.db
+  })
+}));
 app.use(bodyParser.json());//for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));// for parsing application/x-www-form-urlencoded
 //app.use(multer()); // for parsing multipart/form-data
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash());
 
 app.use(function (req, res, next) {
   console.log('Time: %d', Date.now());
+  next();
+});
+
+app.use(function(req, res, next){
+  console.log("app.usr local");
+  res.locals.user = req.session.user;
+  res.locals.post = req.session.post;
+  var error = req.flash('error');
+  res.locals.error = error.length ? error : null;
+
+  var success = req.flash('success');
+  res.locals.success = success.length ? success : null;
   next();
 });
 
@@ -43,6 +70,9 @@ app.get('/logout',routes.logout);
 app.use('/users', users);
 app.use('/hello',routes);
 app.use('/hello/:foo',routes);
+
+
+
 app.get('/file/:name', function (req, res, next) {
   var options = {
     root: __dirname + '/public/',

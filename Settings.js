@@ -1,5 +1,6 @@
-module.export = {
-cookieSecret:'tonychufan',
-db:'chufanblog',
-host:'localhost,
+module.exports = {
+	cookieSecret:'tonychufan',
+	db:'test',
+	host:'localhost',
+	url : 'mongodb://localhost:27017/test'
 };
