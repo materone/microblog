@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title><%= title %> - ChuFan Blog </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+		<link rel='stylesheet' href='/stylesheets/bootstrap.min.css' /> 
+		<style type="text/css">
+      body{
+        padding-top: 60px;
+        padding-bottom: 40px;
+        min-height: 2000px;
+      }
+
+      #top {
+        /*line-height: 0;
+        -webkit-border-radius: 2px;
+        //position: fixed;
+        bottom: 15px;
+        right: 15px;
+        padding: 8px;*/
+        background: black;
+        text-decoration: none;
+        color: white;
+        opacity: 0.2;
+        -webkit-transition: opacity 300ms;
+      }
+
+      #top:hover {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+   
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">ChuFan</a>
+      </div>
+    
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">首页</a></li>
+          <%if(!user){%>
+            <li><a href="/login">登入</a></li>
+            <li><a href="/reg">注册</a></li>
+          <%}else{%>
+            <li><a href="/logout">登出</a></li>
+          <%}%>          
+        </ul>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <ul class="nav navbar-nav">
+          <li><a href="#">Link</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li><a href="#">Separated link</a></li>              
+              <li role="separator" class="divider"></li>
+              <li class="dropdown-header">Nav header</li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>          
+          <ul class="nav navbar-nav navbar-right">
+            <li><p class="navbar-text" onclick="s()">
+            <%if(user){%>
+            Hi, <%=user.name%>
+            <%}else{%>
+            Default
+            <%}%>
+            </p></li>
+            <li><a href="/forum">论坛</a></li>
+            <li class="active"><a href="./">Fixed<span class="sr-only">(current)</span></a></li>
+          </ul>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div>
+  </nav>

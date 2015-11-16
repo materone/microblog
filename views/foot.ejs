@@ -1,0 +1,33 @@
+<hr/>
+    <footer>
+      <p><a href="http://v.find73.com" target="_blank">ChuFan Studio</a></p>
+      <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">点我弹出/隐藏弹出框</button>
+      <button type="button" class="close" aria-label="Close"><span aria-hidden="true" style="color:red">&times;&sect;&reg;&copy;</span></button>
+    </footer>
+  </div>
+  <span id="top-link-block" class="hidden">
+    <a id="top" href="#top" class="well well-sm"  onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+      <i class="glyphicon glyphicon-chevron-up"></i>
+    </a>
+  </span><!-- /top-link-block -->
+  </body>     
+  <script src="/javascripts/jquery.min.js"></script>
+  <script src="/javascripts/bootstrap.min.js"></script>
+  <script type='text/javascript'>
+    $(function(){
+    // Only enable if the document has a long scroll bar
+    // Note the window height + offset
+      if ( ($(window).height() + 100) < $(document).height() ) {
+          $('#top-link-block').removeClass('hidden').affix({
+              // how far to scroll down before link "slides" into view
+              offset: {top:100}
+          });
+      }
+      $('[data-toggle="popover"]').popover();
+    });
+    function s(){        
+      alert($(window).height());
+      alert($(document).height());
+    }
+  </script>
+</html>
