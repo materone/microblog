@@ -60,6 +60,7 @@ app.use(function(req, res, next){
 
 app.use('/', routes);
 app.get('/u/:user',routes.user);
+app.post('/post',checkLogin);
 app.post('/post',routes.post);
 
 app.get('/reg',checkNotLogin);
@@ -74,6 +75,9 @@ app.post('/login',routes.doLogin);
 
 app.get('/logout',checkLogin);
 app.get('/logout',routes.logout);
+
+app.get('/forum',checkLogin);
+app.get('/forum',routes.forum);
 
 // 一个中间件栈，处理指向 /user/:id 的 GET 请求
 app.get('/duser/:id', function (req, res, next) {

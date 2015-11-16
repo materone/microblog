@@ -31,8 +31,12 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li class="active"><a href="/">首页</a></li>
-          <li><a href="/login">登入</a></li>
-          <li><a href="/reg">注册</a></li>
+          <%if(!user){%>
+            <li><a href="/login">登入</a></li>
+            <li><a href="/reg">注册</a></li>
+          <%}else{%>
+            <li><a href="/logout">登出</a></li>
+          <%}%>   
         </ul>
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
@@ -56,8 +60,13 @@
             </ul>
           </li>          
           <ul class="nav navbar-nav navbar-right">
-            <li><p class="navbar-text" onclick="s()">Default</p></li>
-            <li><a href="../navbar-static-top/">Static top</a></li>
+             <li><p class="navbar-text" onclick="s()">
+            <%if(user){%>
+            Hi, <%=user.name%>
+            <%}else{%>
+            Default
+            <%}%>
+            <li><a href="/forum">论坛</a></li>
             <li class="active"><a href="./">Fixed<span class="sr-only">(current)</span></a></li>
           </ul>
         </ul>
