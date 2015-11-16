@@ -61,10 +61,18 @@ app.use(function(req, res, next){
 app.use('/', routes);
 app.get('/u/:user',routes.user);
 app.post('/post',routes.post);
+
+app.get('/reg',checkNotLogin);
 app.get('/reg',routes.reg);
+app.post('/reg',checkNotLogin);
 app.post('/reg',routes.doReg);
+
+app.get('/login',checkNotLogin);
 app.get('/login',routes.login);
+app.get('/login',checkNotLogin);
 app.post('/login',routes.doLogin);
+
+app.get('/logout',checkLogin);
 app.get('/logout',routes.logout);
 
 // 一个中间件栈，处理指向 /user/:id 的 GET 请求
