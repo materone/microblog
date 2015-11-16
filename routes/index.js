@@ -1,6 +1,7 @@
 var express = require('express');
 var crypto = require('crypto');
 var User = require('../models/user');
+var Post = require('../models/post');
 
 var router = express.Router();
 /* GET home page. */
@@ -23,14 +24,49 @@ router.get('/', function(req, res, next) {
 });
 
 router.user = function(req,res){
-	console.log('HEHE');
-	console.log('Param:'+req.params.user);
-	res.end('Mmia');
+	User.get(req.params.user,function(err,user){
+		if(!user){
+			req.flash('error','用户不存在');
+			return res.redirect('/');
+		}
+		Post.get(user.name,function(err,posts){
+			if(err){
+				req.flash('error',err);
+				return res.redirect('/');
+			}
+			res.render('user',{
+				title:user.name,
+				posts:posts
+			});
+		});
+	});
 };
 
 router.post = function(req,res){
-
+	var currentUser = req.session.user;
+	var post = new Post(currentUser.name,req.body.post);
+	post.save(function(err){
+		if(err){
+			req.flash('error',err);
+			return res.redirect();
+		}
+		req.flash('success','发表成功');
+		res.redirect('/u/'+currentUser.name);
+	});
 };
+
+router.forum = function(req,res){
+	Post.get(req.session.user.name,function (err,posts){
+		if(err){
+			posts = [];
+			console.log('message error in forum route');
+		}
+		res.render('user',{
+			title:'论坛',
+			posts:posts
+		});
+	});
+}
 
 router.reg = function(req,res){
 	res.render('reg',{

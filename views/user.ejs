@@ -84,40 +84,26 @@
         <%=error%>
       </div>
     <%}%>
-    <form class="form-horizontal" method="post"> 
-      <fieldset>
-        <legend>
-          用户注册
-        </legend>
-        <div class="control-group">
-          <label class="control-lable" for="username">用户名</label>
-          <div class="controls">
-            <input class="form-control" type="text" id="username" name="username">
-            <p class="help-block">你的用户名，用于登录与显示</p>              
-          </div>
-        </div>
-        <div class="control-group">
-          <label class="control-lable" for="password">口令</label>
-          <div class="controls">
-            <input class="form-control" type="password" id="password" name="password">             
-          </div>
-        </div>
-        <div class="control-group">
-          <label class="control-lable" for="password-repeat">重复输入口令</label>
-          <div class="controls">
-            <input class="form-control" type="password" id="password-repeat" name="password-repeat">            
-          </div>
-        </div>        
-        <div class="control-group">
-          <div class="controls">
-            <div class="form-actions">
-            <br>
-              <button class="btn btn-primary" type="submit">注册</button>
-            </div>
-          </div>
-        </div>
-      </fieldset>
+    <form class="well form-inline center" style="text-align:center;" method="post" action="/post"> 
+      <input type="text" class="span8" name="post">
+      <button class="btn btn-success" type="submit"><i class="icon-comment icon-white"></i>发言</button>
     </form>
+    <%posts.forEach(function(post,index){
+      if(index % 3 == 0){%>
+      <div class="row">
+    <%}%>
+      <div class="span4">
+        <h2><a href="/u/<%=post.user%>"><%=post.user%></a> 说</h2>
+        <p><small><%=post.time%></small></p>
+        <p><%=post.post%></p>
+      </div>
+    <%if(index%3==2){%>
+      </div>
+    <%}%>
+    <%})%>
+    <%if(posts.length % 3 != 0){%>
+      </div>
+    <%}%>
   </div>
   <span id="top-link-block" class="hidden">
     <a href="#top" class="well well-sm"  onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
