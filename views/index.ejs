@@ -12,13 +12,13 @@
       }
 
       #top {
-        line-height: 0;
-        background: black;
+        /*line-height: 0;
         -webkit-border-radius: 2px;
-        position: fixed;
+        //position: fixed;
         bottom: 15px;
         right: 15px;
-        padding: 8px;
+        padding: 8px;*/
+        background: black;
         text-decoration: none;
         color: white;
         opacity: 0.2;
@@ -132,6 +132,7 @@
     <footer>
       <p><a href="http://v.find73.com" target="_blank">ChuFan Studio</a></p>
       <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">点我弹出/隐藏弹出框</button>
+      <button type="button" class="close" aria-label="Close"><span aria-hidden="true" style="color:red">&times;&sect;&reg;&copy;</span></button>
     </footer>
   </div>
   <span id="top-link-block" class="hidden">
@@ -151,8 +152,8 @@
               // how far to scroll down before link "slides" into view
               offset: {top:100}
           });
-      $('[data-toggle="popover"]').popover();
       }
+      $('[data-toggle="popover"]').popover();
     });
     function s(){        
       alert($(window).height());
