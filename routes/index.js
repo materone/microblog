@@ -45,11 +45,16 @@ router.user = function(req,res){
 router.post = function(req,res){
 	var currentUser = req.session.user;
 	var post = new Post(currentUser.name,req.body.post);
+	console.log('in post route:');
+	console.log(currentUser);
+	console.log(post);
 	post.save(function(err){
 		if(err){
 			req.flash('error',err);
-			return res.redirect();
+			console.log(err);
+			return res.redirect('/');
 		}
+		console.log(currentUser);
 		req.flash('success','发表成功');
 		res.redirect('/u/'+currentUser.name);
 	});

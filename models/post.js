@@ -34,7 +34,7 @@ Post.prototype.save = function save(cb){
 				return cb(err);
 			}
 
-			collection.ensureIndex('user',{unique:true});
+			collection.ensureIndex('user');
 			collection.insert(post,{safe:true},function(err,post){
 				db.close();
 				cb(err,post);
