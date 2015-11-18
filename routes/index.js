@@ -61,7 +61,7 @@ router.post = function(req,res){
 };
 
 router.forum = function(req,res){
-	Post.get(req.session.user.name,function (err,posts){
+	Post.get('',function (err,posts){
 		if(err){
 			posts = [];
 			console.log('message error in forum route');

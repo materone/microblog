@@ -24,6 +24,9 @@
           });
       }
       $('[data-toggle="popover"]').popover();
+      if($('#comment')){
+        $('#comment').focus();
+      }
     });
     function s(){        
       alert($(window).height());

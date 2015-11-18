@@ -13,14 +13,13 @@
   <form class="well form-horizontal" method="post" action="/post">
     <fieldset>
       <div class="form-group">
-        <div class="row">
-          <div class="col-sm-10">
-            <input type="text" class="form-control" name="post" placeholder="想说啥就说话">
+            <label class="col-sm-2 control-label" for="comment">我有话说:</label>
+          <div class="col-sm-8">
+            <input type="text" id="comment" class="form-control" name="post" placeholder="想说啥就说话" >
           </div>
           <div class="col-sm-2">
             <button class="btn btn-default" type="submit"><span class='glyphicon glyphicon-comment' aria-hidden='true'></span> 发言</button>
           </div>
-        </div>
       </div>
     </fieldset>
   </form>
