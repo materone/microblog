@@ -1,36 +1,43 @@
-
-  <%- include('head')%>
-  
-  <div id="container" class="container">
-    <%if(success){%>
-      <div class="alert alert-success">
-        <%=success%>
+<%- include('head')%>
+<div id="container" class="container">
+  <%if(success){%>
+  <div class="alert alert-success">
+    <%=success%>
+  </div>
+  <%}%>
+  <%if(error){%>
+  <div class="alert alert-danger">
+    <%=error%>
+  </div>
+  <%}%>
+  <form class="well form-horizontal" method="post" action="/post">
+    <fieldset>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="post" placeholder="想说啥就说话">
+          </div>
+          <div class="col-sm-2">
+            <button class="btn btn-default" type="submit"><span class='glyphicon glyphicon-comment' aria-hidden='true'></span> 发言</button>
+          </div>
+        </div>
       </div>
+    </fieldset>
+  </form>
+  <%posts.forEach(function(post,index){
+  if(index % 3 == 0){%>
+  <div class="row">
     <%}%>
-    <%if(error){%>
-      <div class="alert alert-danger">
-        <%=error%>
-      </div>
-    <%}%>
-    <form class="well form-inline center" style="text-align:center;" method="post" action="/post"> 
-      <input type="text" class="form-control" name="post">
-      <button class="btn btn-default" type="submit"><span class='glyphicon glyphicon-comment' aria-hidden='true'></span></spam> 发言</button>
-    </form>
-    <%posts.forEach(function(post,index){
-      if(index % 3 == 0){%>
-      <div class="row">
-    <%}%>
-      <div class="col-lg-4">
-        <h2><a href="/u/<%=post.user%>"><%=post.user%></a> 说</h2>
-        <p><small><%=post.time%></small></p>
-        <p><%-post.post-%></p>
-      </div>
+    <div class="col-lg-4">
+      <h2><a href="/u/<%=post.user%>"><%=post.user%></a> 说</h2>
+      <p><small><%=post.time%></small></p>
+      <p><%-post.post-%></p>
+    </div>
     <%if(index%3==2){%>
-      </div>
-    <%}%>
-    <%})%>
-    <%if(posts.length % 3 != 0){%>
-      </div>
-    <%}%>
-  <%- include('foot')%>
-  
+  </div>
+  <%}%>
+  <%})%>
+  <%if(posts.length % 3 != 0){%>
+</div>
+<%}%>
+<%- include('foot')%>
