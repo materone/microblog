@@ -37,6 +37,52 @@
         </p>
       </div>
     </div>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+      用户登录
+    </button>
 
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">用户登录</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal" method="post" action="/login">
+              <fieldset>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="username">用户名:</label>
+                  <div class="col-sm-10">
+                    <input class="form-control" type="text" id="username" name="username">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="password">口令:</label>
+                  <div class="col-sm-10">
+                    <input class="form-control" type="password" id="password" name="password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox"> Remember me
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-default" type="submit">登录</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
     <%- include('foot')%>
     
