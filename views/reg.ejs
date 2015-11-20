@@ -1,5 +1,4 @@
 <%- include('head')%>
-
 <div id="container" class="container">
   <%if(success){%>
   <div class="alert alert-success">
@@ -45,12 +44,35 @@
         </div>
       </div>
       <div class="form-group">
+        <label for="dtp_input1" class="col-sm-2 control-label">出生日期:</label>
+        <div class="col-sm-3 input-group date form_datetime" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1" >
+          <input class="form-control" size="16" type="text" value="" id="dtp_input1" name="dtp_input1" readonly>
+          <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+          <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+        </div>
+        <input type="hidden" id="dtp_input1" value="" />
+      </div>
+      <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <button class="btn btn-default" type="submit">注册</button>
         </div>
       </div>
     </fieldset>
   </form>
-</div>
-
+</div>    
+<script src="/javascripts/jquery.min.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="/javascripts/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript">
+  $('.form_datetime').datetimepicker({
+    //language:  'fr',
+    weekStart: 1,
+    todayBtn:  1,
+    autoclose: 1,
+    todayHighlight: 1,
+    startView: 2,
+    forceParse: 0,
+    showMeridian: 1
+  });
+</script>
 <%- include('foot')%>
