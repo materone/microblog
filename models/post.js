@@ -56,10 +56,27 @@ Post.get = function get(username,cb){
 			}
 
 			var query = {};
+			var pInfo = {};
 
 			if(username){
 				query.user=username;
 			}
+
+			collection.count(function(err,count){
+				if(err){
+					console.log(err);
+				}
+				pInfo.count = count;
+				pInfo.uname = username;
+				query.count = count;
+				console.log('page cnt:%d',count);
+				console.log('message:%d',pInfo.count);
+				console.log('message name:%s',pInfo.uname);
+				console.log('cnt:%s',query.count);
+				//console.log(count);
+			});
+			console.log('user:%s',query.user);
+			//console.log(pInfo);
 
 			collection.find(query).sort({time:-1}).toArray(function(err,doc){
 				db.close();

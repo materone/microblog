@@ -57,6 +57,20 @@
           <button class="btn btn-default" type="submit">注册</button>
         </div>
       </div>
+      <div class="form-group">        
+        <div id="starttime_main" class="control-group">
+          <label class="col-sm-2 control-label" for="starttime">开始时间：</label>
+          <div class="col-sm-3 date form_datetime input-group" data-date="2013.05.10"  id="starttimeDiv">
+            <input type="text" class="form-control" value="" id="starttime" readonly>
+            <span class="input-group-addon"> <span class="glyphicon glyphicon-th"></span></span>
+          </div>        
+          <label class="col-sm-2 control-label" for="endtime">结束时间1：</label>
+          <div class="col-sm-3 date form_datetime input-group" data-date="2013.05.10"  id="endtimeDiv">
+            <input type="text" class="form-control" value="" id="endtime" readonly>
+            <span class="input-group-addon"> <span class="glyphicon glyphicon-th"></span>
+          </div>
+        </div>
+      </div>
     </fieldset>
   </form>
 	<form action="" class="form-horizontal"  role="form">
@@ -106,6 +120,43 @@
     forceParse: 0,
     showMeridian: 1,
     pickerPosition: "bottom-left"
+  });
+$('.form_datetime').datetimepicker({
+  //language:  'fr',
+  weekStart: 1,
+  todayBtn:  1,
+  autoclose: 1,
+  todayHighlight: 1,
+  startView: 2,
+  forceParse: 0,
+  showMeridian: 1,
+  pickerPosition: "bottom-left"
+});
+$('#starttime').datepicker({
+  format: 'yyyy.mm.dd',
+  weekStart: 1,
+  autoclose: true,
+  todayBtn: 'linked',
+  language: 'zh-CN' }).on('changeDate',function(ev){  
+    var startTime = ev.date.valueOf();  
+    if(start<teach){   
+      alert("“评估开始时间 ”不能早于“授课时间 ” ！");   
+      $("#starttime").focus();  
+    }   
+  }); 
+$('#endtime').datepicker({  
+  format: 'yyyy.mm.dd',        
+  weekStart: 1,        
+  autoclose: true,        
+  todayBtn: 'linked',        
+  language: 'zh-CN' }).on('changeDate',function(ev){  
+    var endTime = ev.date.valueOf();  
+    alert(endTime);
+    end = endTime;  
+    if(end<start){   
+      alert("“评估结束时间 ”不能早于“评估开始时间 ” ！");     
+    }else{     
+    } 
   });
   $('.form_datetime').datetimepicker({
         language:  'zh-CN',
