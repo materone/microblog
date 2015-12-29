@@ -13,16 +13,27 @@
   <form class="well form-horizontal" method="post" action="/post">
     <fieldset>
       <div class="form-group">
-            <label class="col-sm-2 control-label" for="comment">我有话说:</label>
-          <div class="col-sm-8">
-            <input type="text" id="comment" class="form-control" name="post" placeholder="想说啥就说话" >
-          </div>
-          <div class="col-sm-2">
-            <button class="btn btn-default" type="submit"><span class='glyphicon glyphicon-comment' aria-hidden='true'></span> 发言</button>
-          </div>
+        <label class="col-sm-2 control-label" for="comment">我有话说:</label>
+        <div class="col-sm-8">
+          <input type="text" id="comment" class="form-control" name="post" placeholder="想说啥就说话" >
+        </div>
+        <div class="col-sm-2">
+          <button class="btn btn-default" type="submit"><span class='glyphicon glyphicon-comment' aria-hidden='true'></span> 发言</button>
+        </div>
       </div>
     </fieldset>
   </form>
+  <div style="align:right">
+  <ul class="pagination">
+    <li><a href="#">&laquo;</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">&raquo;</a></li>
+  </ul>
+  </div>
   <%posts.forEach(function(post,index){
   if(index % 3 == 0){%>
   <div class="row">
