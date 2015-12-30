@@ -7,7 +7,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/hello',function(req,res,next){
 	console.log(req.params);
-	res.write('Hello\n');
+    res.write('Hello\n');
 	res.end(new Date().toString());
 });	
 

@@ -67,17 +67,22 @@
           <label class="col-sm-2 control-label" for="endtime">结束时间：</label>
           <div class="col-sm-3 date form_datetime input-group" data-date="2013.05.10"  id="endtimeDiv">
             <input type="text" class="form-control" value="" id="endtime" readonly>
-            <span class="input-group-addon"> <span class="glyphicon glyphicon-th"></span>
+            <span class="input-group-addon"> <span class="glyphicon glyphicon-th"></span></span>
           </div>
         </div>
       </div>
     </fieldset>
   </form>
+
 </div>
-<script src="/javascripts/jquery.min.js"></script>
-<script src="/javascripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="/javascripts/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
 <script type="text/javascript">
+$('.input-daterange').datetimepicker({
+    format: 'yyyy.mm.dd',
+    todayBtn: 'linked'
+});
 $('.form_datetime').datetimepicker({
   //language:  'fr',
   weekStart: 1,
@@ -89,7 +94,7 @@ $('.form_datetime').datetimepicker({
   showMeridian: 1,
   pickerPosition: "bottom-left"
 });
-$('#starttime').datepicker({
+$('#starttime').datetimepicker({
   format: 'yyyy.mm.dd',
   weekStart: 1,
   autoclose: true,
@@ -101,7 +106,7 @@ $('#starttime').datepicker({
       $("#starttime").focus();  
     }   
   }); 
-$('#endtime').datepicker({  
+$('#endtime').datetimepicker({  
   format: 'yyyy.mm.dd',        
   weekStart: 1,        
   autoclose: true,        
