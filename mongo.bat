@@ -1,0 +1,1 @@
+start "MongoDB Daemon" /D C:\MongoDB\Server\3.0\bin\ C:\MongoDB\Server\3.0\bin\mongod.exe --dbpath=C:\mongodb001
