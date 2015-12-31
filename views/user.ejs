@@ -23,18 +23,19 @@
       </div>
     </fieldset>
   </form>
-  <div style="align:right">
-  <ul class="pagination">
-    <li><a href="#">&laquo;</a></li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li><a href="#">&raquo;</a></li>
-  </ul>
+  <div class="text-right">
+    <ul class="pagination">
+      <li><a href="#">&laquo;</a></li>
+      <li><a href="forum?pNo=1">1</a></li>
+      <li><a href="forum?pNo=2">2</a></li>
+      <li><a href="forum?pNo=3">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">5</a></li>
+      <li><a href="#">&raquo;</a></li>
+    </ul>
   </div>
-  <%posts.forEach(function(post,index){
+  <div class="text-right"><ul id='pageControl'></ul></div>
+  <%posts.posts.forEach(function(post,index){
   if(index % 3 == 0){%>
   <div class="row">
     <%}%>
@@ -79,4 +80,23 @@
     </li>
   </ul>
 </nav>
+<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="/javascripts/bootstrap-paginator.min.js"></script>
+<script type="text/javascript">
+    var element = $('#pageControl');
+
+    var options = {
+        bootstrapMajorVersion:3,
+        currentPage: <%=posts.pInfo.pNo%>,
+        numberOfPages: 5,
+        totalPages:<%=posts.pInfo.pCount%>,
+        alignment:"center",
+        pageUrl: function(type, page, current){
+          return "forum?pNo="+page;
+        }
+    }
+
+    element.bootstrapPaginator(options);
+</script>
 <%- include('foot')%>

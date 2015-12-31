@@ -2,6 +2,8 @@ var mongodb = require('mongodb').MongoClient
   , assert = require('assert');
  var settings = require('../Settings');
 
+ var pSize = 10;
+
 function Post(username,post,time){
 	this.user = username;
 	this.post = post;
@@ -43,7 +45,7 @@ Post.prototype.save = function save(cb){
 	});
 };
 
-Post.get = function get(username,cb){
+Post.get = function get(username,req,cb){
 	mongodb.connect(settings.url,function(err,db){
 		if(err){
 			db.close();
@@ -67,28 +69,39 @@ Post.get = function get(username,cb){
 					console.log(err);
 				}
 				pInfo.count = count;
-				pInfo.uname = username;
-				query.count = count;
+				pInfo.uName = username;
 				console.log('page cnt:%d',count);
 				console.log('message:%d',pInfo.count);
 				console.log('message name:%s',pInfo.uname);
-				console.log('cnt:%s',query.count);
 				//console.log(count);
-			});
-			console.log('user:%s',query.user);
-			//console.log(pInfo);
-
-			collection.find(query).sort({time:-1}).toArray(function(err,doc){
-				db.close();
-				if(err){
-					cb(err,null);
+				//fig pageinfo
+				var pNo=1;
+				var pCount = 0;
+				if(req.query.pNo != null){
+					pNo = req.query.pNo;
+				}else if(req.query.pSize != null){
+					pSize = req.query.pSize;
 				}
-				var posts = [];
-				doc.forEach(function(doc,index){
-					var post = new Post(doc.user,doc.post,doc.time);
-					posts.push(post);
+				pInfo.pNo = pNo;
+				pInfo.pSzie = pSize;
+				pInfo.pCount = Math.ceil(count/pSize);
+
+				collection.find(query).skip((pNo-1)*pSize).limit(pSize).sort({time:-1}).toArray(function(err,doc){
+					db.close();
+					if(err){
+						cb(err,null);
+					}
+					var posts = [];
+					var ret = {};
+					doc.forEach(function(doc,index){
+						var post = new Post(doc.user,doc.post,doc.time);
+						posts.push(post);
+					});
+					ret.posts = posts;
+					ret.pInfo = pInfo;
+					console.log(pInfo);
+					cb(null,ret);				
 				});
-				cb(null,posts);				
 			});
 		});
 	});

@@ -29,7 +29,7 @@ router.user = function(req,res){
 			req.flash('error','用户不存在');
 			return res.redirect('/');
 		}
-		Post.get(user.name,function(err,posts){
+		Post.get(user.name,req,function(err,posts){
 			if(err){
 				req.flash('error',err);
 				return res.redirect('/');
@@ -61,7 +61,7 @@ router.post = function(req,res){
 };
 
 router.forum = function(req,res){
-	Post.get('',function (err,posts){
+	Post.get('',req,function (err,posts){
 		if(err){
 			posts = [];
 			console.log('message error in forum route');
